@@ -17,7 +17,7 @@ h_t = h_0 * 2 * fc * ((np.sin(wc * (t - t_0)))/(wc * (t - t_0)))
 for w in w_massive:
     H_jw = np.sum(h_t * np.exp(-1j * w * t) * 1/fs)
     H_jw_massive.append(H_jw)
-    ampl.append(abs(H_jw))
+    ampl.append(np.abs(H_jw))
     phase.append(np.angle(H_jw))
 
 plt.subplot(2,1,1)

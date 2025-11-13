@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 f = 2
-Ts = 0.4 
+Ts = 0.2
 fs = 1 / Ts
 t_analog = np.linspace(0,4,10000)
 t_Ts = np.arange(0, 4 + Ts, Ts)
@@ -17,13 +17,12 @@ s = []
 for n in range(N_s):
     S_t_sum += s_Ts[n] * np.sinc(fs * (t_analog - t_Ts[n]))
 
-
 plt.plot(t_analog, s_analog)
-plt.stem(t_Ts, s_Ts, linefmt = 'r')
+plt.plot(t_Ts, s_Ts)
 plt.title("Непрерывный сигнал и его дискретные отчеты")
 plt.show()
 plt.plot(t_analog, S_t_sum)
-plt.stem(t_Ts, s_Ts, linefmt = 'r')
+plt.plot(t_Ts, s_Ts)
 plt.title("Восстановленные сигнал и его оцифрованная версия")
 plt.show()
 
