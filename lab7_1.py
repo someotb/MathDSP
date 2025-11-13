@@ -11,7 +11,7 @@ wc = np.pi * 2 * fc
 
 h_t = h_0 * 2 * fc * ((np.sin(wc * (t - t_0)))/(wc * (t - t_0)))
 
-H_jw = np.sum(h_t * np.exp(-1j * w * t) * 1/fs) # Доделать тут, вспомнить как считать интергал через np.sum
+H_jw = np.sum(h_t * np.exp(-1j * w * t) * 1/fs)
 
 plt.plot(t, h_t)
 plt.show()
