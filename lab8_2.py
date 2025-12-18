@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.fftpack import fft, fftshift, ifft
+from scipy.fftpack import fft
 
 fc = 10  # Частота cos
 fs = 32 * fc  # Частота дискретизации, избыточная
