@@ -3,12 +3,12 @@ import numpy as np
 
 fc1 = 5  # Гц
 fs1 = fc1 * 100  # 500 Гц
-t1 = np.arange(0, 0.1, 1 / fs1)  # 0.1 сек → 50 отсчётов
+t1 = np.arange(0, 0.1, 1 / fs1)  # 0.1 сек -> 50 отсчётов
 s1 = np.cos(2 * np.pi * fc1 * t1)
 
 fc2 = fc1 * 2  # 10 Гц
 fs2 = fc2 * 100  # 1000 Гц
-t2 = np.arange(0, 0.1, 1 / fs2)  # 0.1 сек → 100 отсчётов
+t2 = np.arange(0, 0.1, 1 / fs2)  # 0.1 сек -> 100 отсчётов
 s2 = np.cos(2 * np.pi * fc2 * t2)
 
 plt.figure(figsize=(10, 3))
