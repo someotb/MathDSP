@@ -4,6 +4,7 @@
 # Задание 1: Вычисление ИХ - импульсной хар-ки
 import numpy as np
 from matplotlib import pyplot as plt
+from scipy.signal import freqz
 
 
 def high_freq_filter(n, omega):
@@ -30,9 +31,37 @@ h = np.array([high_freq_filter(ni, omega) for ni in n])
 
 plt.figure(figsize=(8, 4))
 plt.stem(np.arange(N), h)
-plt.title("ИХ ФВЧ (вариант 16)")
+plt.title("Задание №1, расчет ИХ ФВЧ")
 plt.xlabel("n")
 plt.ylabel("h[n]")
 plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Задание 2: Вычисление частотной характеристики ФНЧ
+w, H = freqz(h, worN=1024, fs=fs)
+
+plt.figure(figsize=(12, 4))
+plt.subplot(1, 2, 1)
+plt.plot(w, 20 * np.log10(np.abs(H)), label="АЧХ")
+plt.axhline(-3, color="red", linestyle="--", label="-3 дБ")
+plt.axvline(fc, color="green", linestyle="--", label=f"f_c = {fc} Гц")
+plt.title("АЧХ (ФВЧ)")
+plt.xlabel("Частота (Гц)")
+plt.ylabel("Уровень (дБ)")
+plt.grid(True)
+plt.legend(["АЧХ", "-3 дБ", "f_c = 2000 Гц"])
+plt.xlim(0, fs / 2)
+plt.ylim(-80, 5)
+
+plt.subplot(1, 2, 2)
+phi = np.angle(H)
+phi_unwrapped = np.unwrap(phi)
+plt.plot(w, phi_unwrapped, label="ФЧХ")
+plt.title("ФЧХ (ФВЧ)")
+plt.xlabel("Частота (Гц)")
+plt.ylabel("Фаза (рад)")
+plt.grid(True)
+plt.xlim(0, fs / 2)
 plt.tight_layout()
 plt.show()
