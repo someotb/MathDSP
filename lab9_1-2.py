@@ -66,20 +66,3 @@ plt.grid(True)
 plt.xlim(0, fs / 2)
 plt.tight_layout()
 plt.show()
-
-f1 = 1500
-f2 = 2500
-
-t = np.linspace(0, 0.025, fs)
-n1 = np.arange(-1000, 1000 + 1)
-s_t = np.cos(2 * np.pi * f1 * t) + np.cos(2 * np.pi * f2 * t)
-
-h = np.array([high_freq_filter(ni, omega) for ni in n1])
-
-s_filterd = np.convolve(s_t, h, mode="same")
-
-plt.figure(figsize=(12, 4))
-plt.suptitle("Задание 3: Получить отсчеты сигнала s(t)")
-plt.plot(t, s_t, label="Исходный сигнал s(t)")
-plt.plot(t, s_filterd, label="Сигнал s(t) прошедший через фильтр")
-plt.show()
